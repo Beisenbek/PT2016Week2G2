@@ -21,12 +21,12 @@ namespace Example2
 
             string line = sr.ReadLine();
 
-            string[] arr = line.Split(',');
+            string[] arr = line.Split(',');  //Разделяем пробелы
 
             int sum = 0;
 
 
-            for(int i = 0; i < arr.Length; ++i)
+            for(int i = 0; i < arr.Length; ++i) 
             {
                 sum += int.Parse(arr[i]);
             }
