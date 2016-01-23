@@ -11,18 +11,29 @@ namespace Example3
     {
         static void Main(string[] args)
         {
-            F5(@"C:\work");
+            Console.ForegroundColor = ConsoleColor.Green;
+            F5(@"C:\");
         }
 
         private static void F5(string path)
         {
-            DirectoryInfo directory = new DirectoryInfo(path);
-            Console.WriteLine(directory.FullName + ": " + directory.GetFiles().Length);
+            try {
+                DirectoryInfo directory = new DirectoryInfo(path);
+                Console.WriteLine(directory.FullName + ": " + directory.GetFiles().Length);
 
-            DirectoryInfo[] dirs = directory.GetDirectories();
-            for (int i = 0; i < dirs.Length; ++i)
+                DirectoryInfo[] dirs = directory.GetDirectories();
+                for (int i = 0; i < dirs.Length; ++i)
+                {
+                    F5(dirs[i].FullName);
+                }
+            }
+            catch
             {
-                F5(dirs[i].FullName);
+
+            }
+            finally
+            {
+
             }
         }
 
